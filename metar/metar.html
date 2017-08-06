@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>METAR</title>
+</head>
+
+<body>
+  <h1>METAR</h1>
+
+  <script>
+
+  //const stations = 'http://weather.rap.ucar.edu/surface/stations.txt';
+  const stations = 'https://www.aviationweather.gov/docs/metar/stations.txt';
+
+  //const stations = 'https://aviationweather.gov/gis/scripts/MetarSiteJSON.php';
+  
+
+ //  fetch(stations)
+	// .then(function(response) {
+	// 	return response.json();
+	// }).then(function(jsonData) {
+	// 	console.log(jsonData);
+	// }).catch(function(err) {
+	// 	console.log("Opps, Something went wrong!", err);
+	// })
+
+
+
+
+
+	// let request = Request(stations, {
+	// 	method: 'GET',
+	// 	mode: 'cors'
+	// })
+
+
+	fetch(stations, {
+		method: 'GET',
+		mode: 'cors'
+	})
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        console.log(response);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
+  	
+  </script>
+
+  <footer>SM &copy; 2017</footer>
+</body>
+
+</html>
