@@ -24,9 +24,13 @@ which links to the same data at
 * https://aviationweather.gov/windtemp/data?level=l&fcst=12&region=slc&layout=on
 * https://aviationweather.gov/windtemp/data?level=l&fcst=24&region=slc&layout=on
 
+See the windtemp [help](https://aviationweather.gov/windtemp/help) for the [text](https://www.aviationweather.gov/windtemp/help?page=text) product:
+
 Params:
 
-* `region=all` / gets you [all](https://aviationweather.gov/windtemp/data?level=l&fcst=06&region=all&layout=off) sites, seems unique to this interface!
+* `level=l` (low (default) or h/hight)
+* `fcst={6|12|24}` (default 6)
+* `region=all` / gets you [all](https://aviationweather.gov/windtemp/data?level=l&fcst=06&region=all&layout=off) sites, seems unique to this (windtemp/data) interface!
 
 The 6, 12, and 24 hr data headers are:
 
@@ -51,6 +55,8 @@ FD1US1 &rarr; FD1 is *Product Identifier*, and *Office Identifier*, this is *AWI
 
 See [NWS Communications Header Policy Document](http://www.nws.noaa.gov/tg/awips.php) for more info on header structure, as well as [International Codes & Bulletin Heading Practices](http://www.nws.noaa.gov/tg/metcode.php) and [Explanation of Data Designators T1T2A1A2ii CCCC](http://www.wmo.int/pages/prog/www/ois/Operational_Information/Publications/WMO_386/AHLsymbols/AHLsymbols_en.html) (and see other stuff at the [WMO](https://www.wmo.int/pages/index_en.html)). [Weather Communications Codes: A Breathless Overview](http://www.ominous-valve.com/wx_codes.txt) is a nice overview.
 
+http://www.wmo.int/pages/prog/www/WMOCodes.html
+
 A search brought me to:
 
 http://forecast.weather.gov/product.php?site=NWS&issuedby=US1&product=FD1&format=CI&version=1&glossary=1
@@ -73,9 +79,11 @@ And this directive give all the details:
 
 http://www.nws.noaa.gov/directives/sym/pd01008012curr.pdf
 
-Various winds aloft forecasts are listed here along with their *Product Identifier* and links to the NWS *Office Identifier* that 
+## NWS Office Product Listing
 
-https://forecast.weather.gov/product_types.php?site=NWS
+Various winds aloft forecasts are listed here along with their *Product Identifier* and links to the NWS *Office Identifier* of offices that offer that product:
+
+[NWS Weather Forecast Office Product Listing](https://forecast.weather.gov/product_types.php?site=NWS)
 
 * FD0 24 Hr Fd Winds Aloft Fcst (45,000 and 53,000 Ft)
     * AK9, HW9, OC9, US9
