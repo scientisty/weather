@@ -10,88 +10,87 @@
 <body>
   <h1>METAR</h1>
 
-	<script>  
-  let stations;
+  <script>
+    let stations;
 
-  // synopticlabs works with cors
- 	stations = 'https://api.synopticlabs.org/v2/stations/metadata?&token=baca761a1c6c4e75820d4565ffb9490d&output=json';
+    // synopticlabs works with cors
+    stations = 'https://api.synopticlabs.org/v2/stations/metadata?&token=baca761a1c6c4e75820d4565ffb9490d&output=json';
 
-// WORKS
- //  fetch(stations, {
-	// 	method: 'GET',
-	// 	mode: 'cors'
-	// })
- //  .then(
- //    function(response) {
- //      if (response.status !== 200) {
- //        console.log('Looks like there was a problem. Status Code: ' +
- //          response.status);
- //        return;
- //      }
- //      console.log(response);
+    // WORKS
+    //  fetch(stations, {
+    // 	method: 'GET',
+    // 	mode: 'cors'
+    // })
+    //  .then(
+    //    function(response) {
+    //      if (response.status !== 200) {
+    //        console.log('Looks like there was a problem. Status Code: ' +
+    //          response.status);
+    //        return;
+    //      }
+    //      console.log(response);
 
- //      // Examine the text in the response
- //      // response.json().then(function(data) {
- //      //   console.log(data);
- //      // });
- //      response.text().then(function(data) {
- //        console.log('Fetch Text:', data);
- //      });
- //    }
- //  )
- //  .catch(function(err) {
- //    console.log('Fetch Error:', err);
- //  });
+    //      // Examine the text in the response
+    //      // response.json().then(function(data) {
+    //      //   console.log(data);
+    //      // });
+    //      response.text().then(function(data) {
+    //        console.log('Fetch Text:', data);
+    //      });
+    //    }
+    //  )
+    //  .catch(function(err) {
+    //    console.log('Fetch Error:', err);
+    //  });
 
-  //stations = 'https://aviationweather.gov/windtemp/data?level=l&fcst=06&region=all&layout=off'
-  //stations = 'http://weather.rap.ucar.edu/surface/stations.txt';
-  //stations = 'https://www.aviationweather.gov/docs/metar/stations.txt';
+    //stations = 'https://aviationweather.gov/windtemp/data?level=l&fcst=06&region=all&layout=off'
+    //stations = 'http://weather.rap.ucar.edu/surface/stations.txt';
+    //stations = 'https://www.aviationweather.gov/docs/metar/stations.txt';
 
-	function parseJSON(response) {
-	  //document.getElementById("output").innerHTML = response.bar;
-	  //console.log('JSONP Response:', response);
-	};
+    function parseJSON(response) {
+      //document.getElementById("output").innerHTML = response.bar;
+      //console.log('JSONP Response:', response);
+    };
 
- // aviationweather does not work with cors, should allow jsonp with ?jsonp=myFunc
-  stations = 'https://aviationweather.gov/gis/scripts/MetarSiteJSON.php?'+'jsonp=parseJSON';
-  
-	let url = new URL(stations);
-	
-	console.log(url.search.slice(1));  // slice(1) chops off leading ?
-	console.log('url.search:', url.search);
-	console.log('url.searchParams:', url.searchParams);
-	let urlSearchParams = url.searchParams;
-	for(var pair of urlSearchParams.entries()) {
-   console.log(pair[0]+ ', '+ pair[1]); 
-	}
-	console.log(urlSearchParams.toString());
+    // aviationweather does not work with cors, should allow jsonp with ?jsonp=myFunc
+    stations = 'https://aviationweather.gov/gis/scripts/MetarSiteJSON.php?' + 'jsonp=parseJSON';
 
-	console.log('stations.search:', stations.search);
-	console.log('stations', stations);
-	console.log('stations.search', stations.search);
-	let params = new URLSearchParams(url.search.slice(1));
-  console.log(params);
+    let url = new URL(stations);
 
-  params = new URLSearchParams(stations.search);
-  console.log(params);
-    
+    console.log(url.search.slice(1)); // slice(1) chops off leading ?
+    console.log('url.search:', url.search);
+    console.log('url.searchParams:', url.searchParams);
+    let urlSearchParams = url.searchParams;
+    for (var pair of urlSearchParams.entries()) {
+      console.log(pair[0] + ', ' + pair[1]);
+    }
+    console.log(urlSearchParams.toString());
 
-	var urlParams = new URLSearchParams(stations);
+    console.log('stations.search:', stations.search);
+    console.log('stations', stations);
+    console.log('stations.search', stations.search);
+    let params = new URLSearchParams(url.search.slice(1));
+    console.log(params);
 
-//console.log(urlParams.get('action')); // "edit"
-//console.log(urlParams.getAll('action')); // ["edit"]
-//console.log(urlParams.toString());
-//console.log(urlParams.append('active', '1'));
+    params = new URLSearchParams(stations.search);
+    console.log(params);
 
 
+    var urlParams = new URLSearchParams(stations);
 
-	var tag = document.createElement("script");
-	//tag.src = stations;
-	tag.type = 'application/javascript';
-	// note application/javascript was a problem!
-	document.getElementsByTagName("head")[0].appendChild(tag);
+    //console.log(urlParams.get('action')); // "edit"
+    //console.log(urlParams.getAll('action')); // ["edit"]
+    //console.log(urlParams.toString());
+    //console.log(urlParams.append('active', '1'));
 
-	</script>
+
+
+    var tag = document.createElement("script");
+    //tag.src = stations;
+    tag.type = 'application/javascript';
+    // note application/javascript was a problem!
+    document.getElementsByTagName("head")[0].appendChild(tag);
+  </script>
 
 
 </body>
