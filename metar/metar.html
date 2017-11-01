@@ -13,36 +13,6 @@
   <script>
     let stations;
 
-    // synopticlabs works with cors
-    stations = 'https://api.synopticlabs.org/v2/stations/metadata?&token=baca761a1c6c4e75820d4565ffb9490d&output=json';
-
-    // WORKS
-    //  fetch(stations, {
-    // 	method: 'GET',
-    // 	mode: 'cors'
-    // })
-    //  .then(
-    //    function(response) {
-    //      if (response.status !== 200) {
-    //        console.log('Looks like there was a problem. Status Code: ' +
-    //          response.status);
-    //        return;
-    //      }
-    //      console.log(response);
-
-    //      // Examine the text in the response
-    //      // response.json().then(function(data) {
-    //      //   console.log(data);
-    //      // });
-    //      response.text().then(function(data) {
-    //        console.log('Fetch Text:', data);
-    //      });
-    //    }
-    //  )
-    //  .catch(function(err) {
-    //    console.log('Fetch Error:', err);
-    //  });
-
     //stations = 'https://aviationweather.gov/windtemp/data?level=l&fcst=06&region=all&layout=off'
     //stations = 'http://weather.rap.ucar.edu/surface/stations.txt';
     //stations = 'https://www.aviationweather.gov/docs/metar/stations.txt';

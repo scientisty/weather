@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>SynopticLabs METAR</title>
+</head>
+
+<body>
+  <h1>SynopticLabs METAR</h1>
+  <script>
+  // synopticlabs works with cors
+  let stations = 'https://api.synopticlabs.org/v2/stations/metadata?token=baca761a1c6c4e75820d4565ffb9490d&status=active&state=CA&output=geojson';
+
+  fetch(stations, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+
+        // Examine the text in the response
+        response.json().then(function(data) {
+          console.log("json", data);
+        });
+      }
+    )
+    .catch(function(err) {
+      console.log('Fetch Error:', err);
+    });
+  </script>
+</body>
+
+</html>
