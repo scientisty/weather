@@ -1,0 +1,107 @@
+---
+layout: page
+title: NWS Area Forecast Discussion
+---
+
+<section id="discussions">
+  <article id="discussion">
+    <p>This page will display the Forecast Discussion from your local NWS Office based on your location</p>
+  </article>
+</section>
+
+<script>
+  if ("geolocation" in navigator) {
+    console.log('geolocation is available');
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  } else {
+    console.log('geolocation IS NOT available');
+  }
+
+  function success(position) {
+    console.log('Your current position is:' +
+      '\nlatitude:  ' + position.coords.latitude +
+      '\nlongitude: ' + position.coords.longitude +
+      '\naccuracy:  ' + position.coords.accuracy + ' m' +
+      '\naltitude:  ' + position.coords.altitude +
+      ' +/- ' + position.coords.altitudeAccuracy +
+      '\nheading:   ' + position.coords.heading +
+      '\nspeed:     ' + position.coords.speed +
+      '\ntimestamp: ' + position.timestamp);
+
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    getStation(latitude, longitude)
+      .then(cwa => {
+        // console.log(cwa);
+        return getDiscussions(cwa);
+      })
+      .then(discussions => {
+        // console.log(discussions);
+        return getDiscussion(discussions, 0);
+      })
+      .then(discussion => {
+        var discussionsElement = document.getElementById("discussion");
+        text = discussion.productText;
+        text = text.split(/\n\n/);
+        text[0] = text[0].replace(/\n/g, '<br>');
+        text[1] = text[1].replace(/\n/g, '<br>');
+        text = text.join('<br><br>');
+        discussionsElement.innerHTML = text;
+      })
+      .catch(err => {
+        console.log('Fetch Error:', err);
+      });
+  };
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  };
+
+  var options = {
+    enableHighAccuracy: true, // default: false
+    timeout: 5000, // default: Infinity
+    maximumAge: 0 // default: 0
+  };
+
+
+  /*
+   * Returns a promise for the NWS station
+   */
+  function getStation(latitude, longitude) {
+    // console.log('Getting CWA at', latitude, ',', longitude, '...');
+    let url = 'https://api.weather.gov/points/' + latitude + ',' + longitude;
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => json.properties.cwa)
+      .catch(err => {
+        console.log('Fetch Error:', err);
+      });
+  }
+
+
+  /*
+   * Returns a promise for the Area Forecast Discussions available at office
+   */
+  function getDiscussions(office) {
+    let url = 'https://api.weather.gov/products/types/afd/locations/' + office;
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => json.features)
+      .catch(err => {
+        console.log('Fetch Error:', err)
+      });
+  }
+
+  /*
+   * Returns a promise for a discussion product, with index 0 being most recent
+   */
+  function getDiscussion(features, i) {
+    let url = features[i]['@id'];
+    return fetch(url)
+      .then(response => response.json())
+      .catch(err => {
+        console.log('Fetch Error:', err)
+      });
+  }
+</script>
