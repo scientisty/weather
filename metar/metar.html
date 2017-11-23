@@ -19,7 +19,7 @@
 
     function parseJSON(response) {
       //document.getElementById("output").innerHTML = response.bar;
-      //console.log('JSONP Response:', response);
+      console.log('JSONP Response:', response);
     };
 
     // aviationweather does not work with cors, should allow jsonp with ?jsonp=myFunc
@@ -27,23 +27,37 @@
 
     let url = new URL(stations);
 
-    console.log(url.search.slice(1)); // slice(1) chops off leading ?
+    // outputs the url
+    console.log('url:', url);
+    console.log('url.href:', url.href);  // console.log('url.toString():', url.toString());
+    console.log('url.hostname:', url.hostname);
+    console.log('url.pathname:', url.pathname);
     console.log('url.search:', url.search);
+
+    // play around
+    console.log('slice:', url.search.slice(1)); // slice(1) chops off leading ?
     console.log('url.searchParams:', url.searchParams);
-    let urlSearchParams = url.searchParams;
-    for (var pair of urlSearchParams.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
+    //let urlSearchParams = url.searchParams;
+
+    console.log('url.searchParams.toString():', url.searchParams.toString());
+    console.log('url.searchParams.entries[]:');
+    for (var pair of url.searchParams.entries()) {
+      console.log('\t' + pair + ' [' + pair[0] + ', ' + pair[1] + ']');
     }
-    console.log(urlSearchParams.toString());
 
-    console.log('stations.search:', stations.search);
+    let urlSearchParams = new URLSearchParams(url.searchParams);
+    console.log('urlSearchParams.toString():', urlSearchParams.toString());
+
+// TODO for the hell of it construct urlSearchParams using constructor
+
     console.log('stations', stations);
-    console.log('stations.search', stations.search);
-    let params = new URLSearchParams(url.search.slice(1));
-    console.log(params);
 
+    let params = new URLSearchParams(url.search.slice(1));
+    console.log('_params:', params);
+
+    // constructing from an object might be deprecated!
     params = new URLSearchParams(stations.search);
-    console.log(params);
+    console.log('_params', params);
 
 
     var urlParams = new URLSearchParams(stations);
@@ -56,7 +70,7 @@
 
 
     var tag = document.createElement("script");
-    //tag.src = stations;
+    tag.src = stations;
     tag.type = 'application/javascript';
     // note application/javascript was a problem!
     document.getElementsByTagName("head")[0].appendChild(tag);
