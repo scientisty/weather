@@ -75,12 +75,12 @@ title: NWS Area Forecast Discussion
 
     getStation(latitude, longitude)
       .then(cwa => {
-        // console.log(cwa);
-        return getDiscussions(cwa);
+        // Gets array of available local discussion products
+        return getProducts('AFD', cwa);
       })
       .then(discussions => {
-        // console.log(discussions);
-        return getDiscussion(discussions, 0);
+        // Gets content of most recent discussion product
+        return getProduct(discussions);
       })
       .then(discussion => {
         var discussionsElement = document.getElementById("discussion");
@@ -124,10 +124,13 @@ title: NWS Area Forecast Discussion
 
 
   /*
-   * Returns a promise for the Area Forecast Discussions available at office
+   * Returns a promise for a product available at office
+   * @param {string} type
+   * @param {string} office
+   * @returns {Array.<Object>} features property of response in json format
    */
-  function getDiscussions(office) {
-    let url = 'https://api.weather.gov/products/types/afd/locations/' + office;
+  function getProducts(type, office = '') {
+    let url = 'https://api.weather.gov/products/types/' + type + '/locations/' + office;
     return fetch(url)
       .then(response => response.json())
       .then(json => json.features)
@@ -136,10 +139,14 @@ title: NWS Area Forecast Discussion
       });
   }
 
+
   /*
    * Returns a promise for a discussion product, with index 0 being most recent
+   * @param {Array.<Object>} features
+   * @param (number) [i=0] array index to return 
+   * @param {Object} json of product, note productText property
    */
-  function getDiscussion(features, i) {
+  function getProduct(features, i = 0) {
     let url = features[i]['@id'];
     return fetch(url)
       .then(response => response.json())
