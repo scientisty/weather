@@ -10,48 +10,9 @@ title: NWS Area Forecast Discussion
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+<script src="overlay.js"></script>
 <script src="nws.js"></script>
-
 <script>
-  /*
-   * Creates overlay and starts spinner
-   * Implicity creates (or assigns to) overlay and spinner global vars
-   */
-  function startOverlay() {
-    var opts = {
-      scale: 2,
-      color: '#fff',
-      opacity: 0,
-      trail: 100
-    };
-    spinner = new Spinner(opts).spin();
-
-    overlay = document.createElement('div');
-    overlay.id = 'overlay';
-    overlay.style.width = '100vw';
-    overlay.style.height = '100vh';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, .75)';
-
-    overlay.appendChild(spinner.el);
-    document.body.appendChild(overlay);
-  }
-
-
-  /*
-   * Stops spinner and removes overlay
-   */
-  function stopOverlay() {
-    spinner.stop();
-    document.body.removeChild(overlay);
-  }
-
-
-  var overlay;
-  var spinner;
-
   if ("geolocation" in navigator) {
     startOverlay(); // initializes overlay and spinner
     console.log('geolocation is available');
@@ -107,7 +68,4 @@ title: NWS Area Forecast Discussion
     timeout: 5000, // default: Infinity
     maximumAge: 0 // default: 0
   };
-
-
-
 </script>
