@@ -4,37 +4,38 @@
  */
 
 
-/*
- * Creates overlay and starts spinner
- * Implicity creates overlay and spinner global vars, so be careful!
- */
-function startOverlay() {
-  var opts = {
-    scale: 2,
-    color: '#fff',
-    opacity: 0,
-    trail: 100
-  };
-  spinner = new Spinner(opts).spin();
+var overlay = {
+  /*
+   * Creates overlay and starts spinner
+   */
+  startOverlay: function() {
+    var opts = {
+      scale: 2,
+      color: '#fff',
+      opacity: 0,
+      trail: 100
+    };
+    this.spinner = new Spinner(opts).spin();
 
-  overlay = document.createElement('div');
-  overlay.id = 'overlay';
-  overlay.style.width = '100vw';
-  overlay.style.height = '100vh';
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0';
+    this.overlay = document.createElement('div');
+    this.overlay.id = 'overlay';
+    this.overlay.style.width = '100vw';
+    this.overlay.style.height = '100vh';
+    this.overlay.style.position = 'fixed';
+    this.overlay.style.top = '0';
 
-  overlay.style.backgroundColor = 'rgba(0, 0, 0, .75)';
+    this.overlay.style.backgroundColor = 'rgba(0, 0, 0, .75)';
 
-  overlay.appendChild(spinner.el);
-  document.body.appendChild(overlay);
-}
+    this.overlay.appendChild(this.spinner.el);
+    document.body.appendChild(this.overlay);
+  },
 
 
-/*
- * Stops spinner and removes overlay
- */
-function stopOverlay() {
-  spinner.stop();
-  document.body.removeChild(overlay);
+  /*
+   * Stops spinner and removes overlay
+   */
+  stopOverlay: function() {
+    this.spinner.stop();
+    document.body.removeChild(this.overlay);
+  }
 }

@@ -14,7 +14,7 @@ title: NWS Area Forecast Discussion
 <script src="nws.js"></script>
 <script>
   if ("geolocation" in navigator) {
-    startOverlay(); // initializes overlay and spinner
+    overlay.startOverlay(); // initializes overlay and spinner
     console.log('geolocation is available');
     navigator.geolocation.getCurrentPosition(success, error, options);
   } else {
@@ -52,7 +52,7 @@ title: NWS Area Forecast Discussion
         text[1] = text[1].replace(/\n/g, '<br>');
         text = text.join('<br><br>');
         discussionsElement.innerHTML = text;
-        stopOverlay();
+        overlay.stopOverlay();
       })
       .catch(err => {
         console.log('Fetch Error:', err);
