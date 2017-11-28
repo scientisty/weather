@@ -1,0 +1,293 @@
+http://www.nws.noaa.gov/directives/sym/pd01008012curr.pdf
+NWSI 10-812 OCTOBER 25, 2016
+
+# - Indicates locations for which 45,000- and 53,000-foot forecasts are available.
+Latitude and Longitude are in degrees and minutes. West longitude and south latitude are
+indicated as negative (-). Elevation is in feet.
+STATE
+Identifier Location Latitude Longitude Elevation
+ALABAMA
+BHM# Birmingham 33°33' -86°44' 620
+HSV Huntsville 34°33' -86°46’ 629
+MGM Montgomery 32°13' -86°19' 221
+MOB# Mobile 30°41' -88°14' 190
+ALASKA
+ADK# Adak 51°56' -176°25' 13
+ADQ# Kodiak 57°46' -152°35' 112
+AKN# King Salmon 58°44' -156°45' 49
+ANC# Anchorage 61°14' -149°33' 131
+ANN# Annette Island 55°03' -131°37' 112
+BET# Bethel 60°35' -161°35' 51
+BRW# Barrow 71°17' -156°31' 13
+BTI# Barter Island 70°10' -143°55' 49
+BTT# Bettles 66°54' -151°30' 673
+CDB# Cold Bay 55°11' -162°22' 102
+CZF# Cape Romanzof 61°47' -166°02' 457
+EHM# Cape Newenham 58°39' -162°04' 541
+FAI# Fairbanks 64°43' -148°11' 453
+FYU# Fort Yukon 66°35' -145°05' 431
+GAL# Galena 64°44' -156°56' 152
+GKN# Gulkana 62°09' -145°27' 21
+HOM# Homer 59°39' -151°29' 78
+JNU# Juneau 58°26' -134°41' 23
+LUR# Cape Lisburne 68°53' -166°07' 12
+MCG# McGrath 62°49' -155°24' 338
+MDO# Middleton Island 59°30' -146°18' 72
+OME# Nome 64°37' -165°05' 23
+ORT# Northway 63°04' -142°04' 1,722
+OTZ# Kotzebue 66°39' -162°54' 16
+SNP# St. Paul 57°09' -170°37' 30
+TKA# Talkeetna 62°19' -150°06' 358
+UNK# Unalakleet 63°53' -160°48' 21
+YAK# Yakutat 59°37' -139°30' 30
+IKO# Nikolski 52°57' -168°51' 73
+AFM# Ambler 67°06' -157°51' 289
+GULF OF ALASKA
+5AB# 52°25' 176°00' 0
+5AC# 52°00' -135°00' 0
+5AD# 54°00' -145°00' 0
+5AE# 55°00' -155°00' 0
+5AF# 56°00' -137°00' 0
+5AG# 58°00' -142°00' 0
+ARKANSAS
+FSM Fort Smith 35°23' -94°16' 468
+LIT# Little Rock 34°40' -92°10' 258
+ARIZONA
+PHX Phoenix 33°25' -111°53' 1,132
+PRC# Prescott 34°42' -112°28' 5,042
+TUS# Tucson 32°07' -110°49' 2,630
+CALIFORNIA
+BIH# Bishop 37°22' -118°21' 4,120
+BLH# Blythe 33°35' -114°45' 397
+FAT# Fresno 36°53' -119°48' 332
+FOT Fortuna 40°40' -124°14' 390
+ONT Ontario 34°03' -117°36' 952
+RBL# Red Bluff 40°05' -122°14' 354
+SAC Sacramento 38°26' -121°33' 21
+SAN# San Diego 32°44' -117°11' 15
+SBA# Santa Barbara 34°30' -119°46' 10
+SFO# San Francisco 37°37' -122°22' 11
+SIY Montague 41°47' -122°27' 2,648
+WJF Lancaster 34°44' -118°13' 2,347
+COLORADO
+ALS# Alamosa 37°20' -105°48' 7,535
+DEN# Denver 39°48' -104°53’ 5,333
+GJT# Grand Junction 39°03' -108°47' 4,858
+PUB Pueblo 38°17' -104°25' 4,726
+CONNECTICUT
+BDL Windsor Locks 41°56' -72°41' 174
+FLORIDA
+EYW Key West 24°35' -81°48' 4
+JAX# Jacksonville 30°26' -81°33' 30
+MIA# Miami 25°57' -80°27' 10
+MLB Melbourne 28°06' -80°38' 33
+PFN Panama City 30°12' -85°40' 20
+PIE# St. Petersburg 27°54' -82°41' 11
+TLH# Tallahassee 30°33' -84°22' 81
+GEORGIA
+ATL# Atlanta 33°37' -84°26' 1,026
+CSG Columbus 32°36' -85°01' 397
+SAV Savannah 32°09' -81°06' 50
+HAWAII
+ITO# Hilo 19°43' -155°03' 38
+HNL# Honolulu 21°19' -157°55' 13
+LIH# Lihue 21°59' -159°20' 153
+OGG# Kahului 20°54' -156°26' 54
+LNY# Lanai 20°47’ -156°57' 1,308
+KOA# Kailua-Kona 19°44’ -156°03 47
+IDAHO
+BOI# Boise 43°34' -116°14' 2,858
+LWS Lewiston 46°22' -116°52' 1,438
+PIH# Pocatello 42°52' -112°39' 4,448
+ILLINOIS
+JOT# Joliet 41°32' -88°19' 582
+SPI Springfield 39°50' -89°40' 597
+INDIANA
+EVV Evansville 38°02' -87°31' 418
+FWA Fort Wayne 40°58' -85°11' 800
+IND# Indianapolis 39°48' -86°22' 797
+IOWA
+BRL Burlington 40°43' -90°55' 698
+DBQ# Dubuque 42°24' -90°42' 1,076
+DSM# Des Moines 41°26' -93°38' 957
+MCW Mason City 43°05' -93°19' 1,213
+KANSAS
+GCK# Garden City 37°55' -100°43' 2,888
+GLD# Goodland 39°23' -101°41' 3,654
+ICT# Wichita 37°43' -97°27' 1,332
+SLN Salina 38°52' -97°37' 1,272
+KENTUCKY
+LOU# Louisville 38°06' -85°34' 546
+LOUISIANA
+LCH Lake Charles 30°08' -93°06' 16
+MSY# New Orleans 30°01' -90°10' 4
+SHV# Shreveport 32°46' -93°48' 258
+MAINE
+BGR Bangor 44°50' -68°52' 192
+CAR# Caribou 46°52' -68°01' 623
+PWM Portland 43°38' -70°18' 74
+MARYLAND
+EMI# Westminster 39°29' -76°58' 820
+MASSACHUSETTS
+ACK Nantucket 41°16' -70°01' 48
+BOS# Boston 42°21' -70°59' 20
+MICHIGAN
+ECK# Peck 43°15' -82°43' 810
+MKG Muskegon 43°10' -86°02' 628
+MQT Marquette 46°31' -87°35' 1,419
+SSM# Sault Ste. Marie 46°24' -84°18' 690
+TVC Traverse City 44°40' -85°32' 624
+AXN Alexandria 45°57' -95°13' 1,425
+DLH Duluth 46°48' -92°12' 1,428
+INL# International Falls 48°33' -93°24' 1,184
+MSP# Minneapolis-St Paul 45°08' -93°22' 841
+MISSOURI
+CGI Cape Girardeau 37°13' -89°34' 342
+COU Columbia 38°48' -92°13' 889
+MKC# Kansas City 39°16' -94°35' 758
+SGF# Springfield 37°21' -93°20' 1,267
+STL# St. Louis 38°51' -90°28' 589
+MISSISSIPPI
+JAN# Jackson 32°30' -90°10' 346
+MONTANA
+BIL# Billings 45°48' -108°37' 3,605
+DLN# Dillon 45°14' -112°32' 5,238
+GPI# Kalispell 48°12' -114°10' 2,972
+GGW# Glasgow 48°12' -106°37' 2,293
+GTF# Great Falls 47°27' -111°24' 3,674
+MLS Miles City 46°22' -105°57' 2,628
+NORTH CAROLINA
+HAT Cape Hatteras 35°16' -75°33' 11
+ILM# Wilmington 34°21' -77°52' 32
+RDU# Raleigh-Durham 35°52' -78°47' 437
+NORTH DAKOTA
+DIK# Dickinson 46°51' -102°46' 2,589
+GFK Grand Forks 47°57' -97°11' 844
+MOT Minot 48°15' -101°17' 1,715
+NEBRASKA
+BFF# Scottsbluff 41°53' -103°28' 3,965
+GRI Grand Island 40°59' -98°18' 1,846
+OMA Omaha 41°10' -95°44' 983
+ONL# O’Neill 42°28' -98°41' 2,030
+NEW HAMPSHIRE
+BML Berlin 44°38' -71°11' 1,158
+NEW JERSEY
+ACY Atlantic City 39°27' -74°34' 76
+NEW MEXICO
+ABQ# Albuquerque 35°02' -106°48' 5,352
+FMN# Farmington 36°44' -108°05' 5,503
+ROW Roswell 33°20' -104°37' 3,669
+TCC Tucumcari 35°10' -103°35' 4,063
+ZUN Zuni 34°57' -109°09' 6,454
+NEVADA
+BAM# Battle Mountain 40°34' -116°55' 4,532
+ELY# Ely 39°17' -114°50' 6,255
+LAS# Las Vegas 36°04' -115°09' 2,174
+RNO# Reno 39°31' -119°39' 4,412
+NEW YORK
+ALB# Albany 42°44' -73°48' 285
+BUF# Buffalo 42°55' -78°38' 725
+JFK# New York 40°37' -73°46' 12
+PLB# Plattsburgh 44°48' -73°24' 371
+SYR Syracuse 43°09' -76°12' 421
+OHIO
+CLE# Cleveland 41°21' -82°09' 792
+CMH Columbus 39°59' -82°55' 816
+CVG Covington 39°00’ -84°42' 891
+OKLAHOMA
+GAG Gage 36°20' -99°52' 2,223
+OKC# Oklahoma City 35°24' -97°38' 1,295
+TUL Tulsa 36°11' -95°47' 676
+OREGON
+AST Astoria 46°09' -123°52' 11
+IMB# Kimberly 44°38' -119°42' 5,220
+LKV# Lakeview 42°29' -120°30' 4,728
+OTH# North Bend 43°24' -124°10' 14
+PDX# Portland 45°44' -122°35' 26
+RDM Redmond 44°15' -121°18' 3,077
+PENNSYLVANIA
+AGC Pittsburgh 40°16' -80°02' 1,252
+AVP Wilkes-Barre/
+Scranton
+41°16' -75°41' 957
+PSB# Phillipsburg 40°54' -77°59' 1,948
+SOUTH CAROLINA
+CAE# Columbia 33°51' -81°03' 236
+CHS Charleston 32°53' -80°02' 45
+FLO Florence 34°13' -79°39' 147
+GSP Greer 34°53' -82°13' 972
+SOUTH DAKOTA
+ABR# Aberdeen 45°25' -98°22' 1,301
+FSD Sioux Falls 43°38' -96°46' 1,429
+PIR Pierre 44°23' -100°09' 1,742
+RAP# Rapid City 43°58' -103°00' 3,182
+TENNESSEE
+BNA# Nashville 36°07' -86°40' 599
+MEM# Memphis 35°03' -89°58' 332
+TRI# Bristol/Johnson 36°28' -82°24' 1,519
+TYS Knoxville 35°54' -83°53' 981
+TEXAS
+ABI# Abilene 32°28' -99°51' 1,790
+AMA# Amarillo 35°17' -101°38' 3,605
+BRO# Brownsville 25°55' -97°22' 22
+CLL College Station 30°36' -96°25' 319
+CRP# Corpus Christi 27°54' -97°26' 44
+DAL# Dallas 32°50' -96°51' 487
+DRT# Del Rio 29°22' -100°55' 999
+ELP# El Paso 31°48' -106°16' 3,956
+HOU# Houston 29°38' -95°16' 47
+INK# Wink 31°52' -103°14' 2,818
+LBB Lubbock 33°42' -101°54' 3,281
+LRD# Laredo 27°28' -99°25' 508
+MRF Marfa 30°17' -103°37' 4,848
+PSX Palacios 28°45' -96°18' 15
+SAT# San Antonio 28°38' -98°27' 809
+SPS Wichita Falls 33°59' -98°35' 1,015
+UTAH
+BCE# Bryce Canyon 37°41' -112°18' 7,586
+SLC# Salt Lake City 40°51' -111°58' 4,227
+VIRGINIA
+ORF Norfolk 36°53' -76°12' 27
+RIC# Richmond 37°30' -77°19' 168
+ROA Roanoke 37°20' -80°04' 1,175
+WASHINGTON
+GEG# Spokane 47°33' -117°37' 2,372
+SEA# Seattle 47°26' -122°18' 429
+YKM Yakima 46°34' -120°26' 1,095
+WISCONSIN
+GRB# Green Bay 44°33' -88°11' 695
+LSE La Crosse 43°52' -91°15' 653
+WEST VIRGINIA
+CRW# Charleston 38°20' -81°46' 982
+EKN Elkins 38°54' -80°05' 1,987
+WYOMING
+CZI# CrazyWoman 43°59' -106°26' 4,798
+LND Lander 42°48' -108°43' 5,586
+MBW Medicine Bow 41°50' -106°00' 7,000
+RKS# Rock Springs 41°35' -109°00' 6,760
+ATLANTIC OCEAN
+2XG# Gauge 30°20' -78°30' 0
+GULF OF MEXICO
+T01 West Cameron 28°30' -93°30' 0
+T06 Ship Shoal 28°30' -91°00' 0
+T07 S Mobile South 28°30' -88°00' 0
+4J3 S Apalachicola South 28°30' -85°00' 0
+H51 Bay City 26°30' -95°00' 0
+H52 Mid Gulf 26°00' -89°30' 0
+H61 W Fort Myers West 26°30' -84°00' 0
+PACIFIC OCEAN
+JON# Johnston Island 16°44' -169°32' 7
+MAJ# Majuro 07°04' 171°16' 6
+KWA# Kwajalein 08°43' 167°44' 16
+MDY# Midway Island 28°12' -177°23' 13
+PPG# Pago Pago -14°20' -17043' 30
+TTK# Kosrae 05°21' 162°58' 11
+AWK# Wake Island 19°17' 166°39' 14
+GRO# Rota 14°11' 145°14' 607
+GSN# Saipan 15°07' 145°44' 215
+TNI# West Tinian 15°00' 145°37' 271
+GUM# Guam 13°29' 144°48' 298
+TKK# Chuuk, FSM 07°28' 151°51' 10
+PNI# Pohnpei, FSM 06°59' 158°13' 8
+ROR# Koror, Palau 07°22' 134°33' 176
+T11# Yap, FSM 09°30’ 138°05' 91
