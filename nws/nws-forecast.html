@@ -3,6 +3,34 @@ layout: page
 title: NWS Hourly Forecast
 ---
 
+<style>
+  body {
+    margin: 0px;
+  }
+
+  /*.domain {
+    display: none;
+  }*/
+
+  /*.tick line {
+    stroke: #C0C0BB;
+  }*/
+
+  /*.tick text {
+    fill: #8E8883;
+    font-size: 20pt;
+    font-family: sans-serif;
+  }*/
+
+  /*.axis-label {
+    fill: #635F5D;
+    font-size: 50pt;
+    font-family: sans-serif;
+  }*/
+</style>
+
+<svg id=chart width="960" height="500"></svg>
+<svg id=chart2 width="960" height="500"></svg>
 <section class="forecast"></section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -35,6 +63,8 @@ title: NWS Hourly Forecast
     getHourlyForecast(latitude, longitude)
       .then(periods => {
         createTimepoints(periods);
+        drawLineChart1();
+        drawLineChart2();
         overlay.stopOverlay();
       })
       .catch(err => {
@@ -85,5 +115,147 @@ title: NWS Hourly Forecast
             d.temperature + ' ' + d.temperatureUnit + ' ' + d.windSpeed + ' ' + d.windDirection + ' ' +
             d.shortForecast + '</p>';
         });
+  }
+
+  function drawLineChart1() {
+    const xValue = d => d.timestamp;
+    const xLabel = 'Time';
+    const yValue = d => d.temperature;
+    const yLabel = 'Temperature';
+    const margin = {left: 120, right: 30, top: 20, bottom: 120};
+
+    const svg = d3.select('svg#chart');
+    const width = svg.attr('width');
+    const height = svg.attr('height');
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+
+    const g = svg.append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+    const xAxisG = g.append('g')
+        .attr('transform', `translate(0, ${innerHeight})`);
+    const yAxisG = g.append('g');
+
+    xAxisG.append('text')
+        .attr('class', 'axis-label')
+        .attr('x', innerWidth / 2)
+        .attr('y', 100)
+        .text(xLabel);
+
+    yAxisG.append('text')
+        .attr('class', 'axis-label')
+        .attr('x', -innerHeight / 2)
+        .attr('y', -60)
+        .attr('transform', `rotate(-90)`)
+        .style('text-anchor', 'middle')
+        .text(yLabel);
+
+    const xScale = d3.scaleTime();
+    const yScale = d3.scaleLinear();
+
+    const xAxis = d3.axisBottom()
+      .scale(xScale)
+      .tickPadding(15)
+      .tickSize(-innerHeight);
+
+    const yAxis = d3.axisLeft()
+      .scale(yScale)
+      .ticks(5)
+      .tickPadding(15)
+      .tickSize(-innerWidth);
+
+    const line = d3.line()
+      .x(d => xScale(xValue(d)))
+      .y(d => yScale(yValue(d)));
+
+    const row = d => {
+      d.timestamp = new Date(d.timestamp);
+      d.temperature = +d.temperature;
+      return d;
+    };
+
+    d3.csv('https://cdn.rawgit.com/curran/ba21316eafc6b84b22d1a5d49ad2a798/raw/71dd9fdd24a59aea0ca95713c19e796714a5a168/week_temperature_sf.csv', row, data => {
+      console.log(data);
+      xScale
+        .domain(d3.extent(data, xValue))
+        .range([0, innerWidth])
+        .nice();
+
+      yScale
+        .domain(d3.extent(data, yValue))
+        .range([innerHeight, 0])
+        .nice();
+
+      g.selectAll('circle').data(data)
+          .enter().append('circle')
+          .attr('cx', d => xScale(xValue(d)))
+          .attr('cy', d => yScale(yValue(d)))
+          .attr('fill-opacity', 0.6)
+          .attr('r', 3);
+
+      g.append('path')
+          .attr('fill', 'none')
+          .attr('stroke', 'black')
+          .attr('d', line(data));
+
+      xAxisG.call(xAxis);
+      yAxisG.call(yAxis);
+    });
+  }
+
+  function drawLineChart2() {
+    var svg = d3.select("svg#chart2"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var parseTime = d3.timeParse("%d-%b-%y");
+
+    var x = d3.scaleTime()
+        .rangeRound([0, width]);
+
+    var y = d3.scaleLinear()
+        .rangeRound([height, 0]);
+
+    var line = d3.line()
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.close); });
+
+    d3.tsv("https://gist.githubusercontent.com/mbostock/3883245/raw/bb1f7271beadff13fc721c66c3e857d89627c554/data.tsv", function(d) {
+      d.date = parseTime(d.date);
+      d.close = +d.close;
+      return d;
+    }, function(error, data) {
+      if (error) throw error;
+
+      x.domain(d3.extent(data, function(d) { return d.date; }));
+      y.domain(d3.extent(data, function(d) { return d.close; }));
+
+      g.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
+        .select(".domain")
+          .remove();
+
+      g.append("g")
+          .call(d3.axisLeft(y))
+        .append("text")
+          .attr("fill", "#000")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", "0.71em")
+          .attr("text-anchor", "end")
+          .text("Price ($)");
+
+      g.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "steelblue")
+          .attr("stroke-linejoin", "round")
+          .attr("stroke-linecap", "round")
+          .attr("stroke-width", 1.5)
+          .attr("d", line);
+    });
   }
 </script>
