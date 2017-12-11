@@ -33,11 +33,7 @@ title: NWS Hourly Forecast
 
     getHourlyForecast(latitude, longitude)
       .then(periods => {
-        let data = [];
-        for (let period of periods) {
-          data.push(createTimepoint(period));
-        }
-        // console.log(data);
+        createTimepoints(periods);
         overlay.stopOverlay();
       })
       .catch(err => {
@@ -71,10 +67,20 @@ title: NWS Hourly Forecast
       });
   }
 
+
+  /*
+   * Constructs elements for each forecast period and adds to dom
+   * @param {Array.<Object>}
+   */
+  function createTimepoints(periods) {
+    for (let period of periods) {
+      createTimepoint(period);
+    }
+  }
+
   /*
    * Constructs a div[class=timepoint] and adds it to .forecast
    * @param {Object}
-   * @returns {Object} same as input but only with properties of interest
    */
   function createTimepoint(period) {
     var timepoint = document.createElement('div');
@@ -97,10 +103,5 @@ title: NWS Hourly Forecast
 
     let forecast = document.getElementsByClassName('forecast')[0];
     forecast.appendChild(timepoint);
-
-    // Creates array of objects selecting only the properties we want
-    let data = _.pick(period, 'startTime', 'temperature', 'temperatureUnit', 'windSpeed', 'windDirection', 'shortForecast');
-    // data.startTime = starTime; // update object with Date object
-    return data;
   }
 </script>
