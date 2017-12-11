@@ -70,39 +70,20 @@ title: NWS Hourly Forecast
 
 
   /*
-   * Constructs elements for each forecast period and adds to dom
+   * Constructs a div[class=timepoint] each forecast period and adds it to .forecast
    * @param {Array.<Object>}
    */
   function createTimepoints(periods) {
-    for (let period of periods) {
-      createTimepoint(period);
-    }
-  }
-
-  /*
-   * Constructs a div[class=timepoint] and adds it to .forecast
-   * @param {Object}
-   */
-  function createTimepoint(period) {
-    var timepoint = document.createElement('div');
-    timepoint.class = 'timepoint';
-    timepoint.style.border = 'solid black'
-    timepoint.style.padding = '0 1em';
-
-    // There is some autoconversion of Date objects using toString()
-    let startTime = new Date(period.startTime);
-    let endTime = new Date(period.endTime);
-    let temperature = period.temperature;
-    let temperatureUnit = period.temperatureUnit;
-    let windSpeed = period.windSpeed;
-    let windDirection = period.windDirection;
-    let shortForecast = period.shortForecast;
-
-    timepoint.innerHTML = '<p>' + startTime + '<br>' +
-      temperature + ' ' + temperatureUnit + ' ' + windSpeed + ' ' + windDirection + ' ' +
-      shortForecast + '</p>';
-
-    let forecast = document.getElementsByClassName('forecast')[0];
-    forecast.appendChild(timepoint);
+    d3.select('.forecast').selectAll('div')
+      .data(periods)
+      .enter().append('div')
+        .attr('class', 'timepoint')
+        .style('border', 'solid black')
+        .style('padding', '0 1em')
+        .html(function(d) {
+          return '<p>' + Date(d.startTime) + '<br>' +
+            d.temperature + ' ' + d.temperatureUnit + ' ' + d.windSpeed + ' ' + d.windDirection + ' ' +
+            d.shortForecast + '</p>';
+        });
   }
 </script>
