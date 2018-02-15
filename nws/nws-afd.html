@@ -3,6 +3,17 @@ layout: page
 title: NWS Area Forecast Discussion
 ---
 
+<style>
+
+#discussion {
+  transition: opacity 1s ease, visibility 1s ease;
+  visibility: hidden;
+  /*opacity: 0;*/
+}
+
+
+</style>
+
 <section id="discussions">
   <article id="discussion">
     <p>This page will display the Forecast Discussion from your local NWS Office based on your location</p>
@@ -52,6 +63,8 @@ title: NWS Area Forecast Discussion
         text[1] = text[1].replace(/\n/g, '<br>');
         text = text.join('<br><br>');
         discussionsElement.innerHTML = text;
+        discussionsElement.style.visibility = 'visible';
+        discussionsElement.style.opacity = 1;
         overlay.stopOverlay();
       })
       .catch(err => {
