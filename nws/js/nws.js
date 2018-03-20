@@ -6,8 +6,8 @@
  * @returns {string} id of "nearest" weather office
  */
 function getStation(latitude, longitude) {
-  // console.log('Getting CWA at', latitude, ',', longitude, '...');
   let url = 'https://api.weather.gov/points/' + latitude + ',' + longitude;
+  console.log('fetching', url);
   return fetch(url)
     .then(response => response.json())
     .then(json => json.properties.cwa)
@@ -25,6 +25,7 @@ function getStation(latitude, longitude) {
  */
 function getProducts(type, office = '') {
   let url = 'https://api.weather.gov/products/types/' + type + '/locations/' + office;
+  console.log('fetching', url);
   return fetch(url)
     .then(response => response.json())
     .then(json => json.features)
@@ -42,6 +43,7 @@ function getProducts(type, office = '') {
  */
 function getProduct(features, i = 0) {
   let url = features[i]['@id'];
+  console.log('fetching', url);
   return fetch(url)
     .then(response => response.json())
     .catch(err => {
