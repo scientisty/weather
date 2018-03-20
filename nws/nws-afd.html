@@ -14,7 +14,9 @@ title: NWS Area Forecast Discussion
 <script src="js/nws.js"></script>
 <script src="js/geolocate.js"></script>
 <script>
-  getStation(latitude, longitude)
+  overlay.startOverlay(); // initializes overlay and spinner
+  getPosition()
+    .then(position => getStation(position.coords.latitude, position.coords.longitude))
     .then(cwa => {
       // Gets array of available local discussion products
       return getProducts("AFD", cwa);
