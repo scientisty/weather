@@ -45,9 +45,9 @@ function getPosition() {
     }
 
     var options = {
-      enableHighAccuracy: true, // default: false
-      timeout: 5000, // default: Infinity
-      maximumAge: 0 // default: 0
+      enableHighAccuracy: false, // default: false
+      timeout: 30000, // default: Infinity
+      maximumAge: 10000000 // default: 0
     };
   });
 }
