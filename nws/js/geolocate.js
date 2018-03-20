@@ -30,29 +30,6 @@ function success(position) {
 
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
-
-  getStation(latitude, longitude)
-    .then(cwa => {
-      // Gets array of available local discussion products
-      return getProducts("AFD", cwa);
-    })
-    .then(discussions => {
-      // Gets content of most recent discussion product
-      return getProduct(discussions);
-    })
-    .then(discussion => {
-      var discussionsElement = document.getElementById("discussion");
-      text = discussion.productText;
-      text = text.split(/\n\n/);
-      text[0] = text[0].replace(/\n/g, "<br>");
-      text[1] = text[1].replace(/\n/g, "<br>");
-      text = text.join("<br><br>");
-      discussionsElement.innerHTML = text;
-      overlay.stopOverlay();
-    })
-    .catch(err => {
-      console.log("Fetch Error:", err);
-    });
 }
 
 function error(err) {
