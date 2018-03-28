@@ -1,0 +1,17 @@
+add this rad page
+http://www.spc.noaa.gov/exper/href/
+note: RAP replaced RUC
+
+this replaced qpf, fronts, surface analysis, and others!
+http://www.wpc.ncep.noaa.gov/#page=ovw
+
+note differences between QPF and PQPF
+QPF - in inches?
+PQPF - based off 6-hour QPFs and ensembles of model forecasts, two forms, both (and QPF) deal with (filled) contours!
+ "Probability of Precipitation of at Least a Specific Amount"
+ maps shows probability that precipitation will meet or exceed a threshold amount
+"Precipitation Amount by Percentile"
+ maps shows precipitation accumulataion that is not expected to be exceeded by the percentile amount, 50% is the default view and easiest to parse, but say 5th percentile means that thre is a 95% chance that accumulation will meet or exceed the depicted amount, it's like the chance that you're wrong, what's not clear is precisely how the inch contour lines are calculated. 
+ note that precip by percentile at 50% is visually similar to the QPF map
+ see http://www.wpc.ncep.noaa.gov/pqpf/about_pqpf_products.shtml for details
+ deal with uncertanty about the WPC QPF
