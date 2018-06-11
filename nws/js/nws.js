@@ -22,7 +22,7 @@ function getStation(latitude, longitude) {
  * Returns a promise for a product available at office.
  * 
  * @param {string} type
- * @param {string} office
+ * @param {string=} office
  * @returns {Promise<Object[]>} features property of response in json format
  */
 function getProducts(type, office = '') {
@@ -30,7 +30,15 @@ function getProducts(type, office = '') {
   console.log('fetching', url);
   return fetch(url)
     .then(response => response.json())
-    .then(json => json['@graph'])
+    .then(json => {
+      if (office === '') {
+        // The /products/types/{typeId}/locations endpoint returns results in 'locations' property.
+        return json['locations'];
+      } else {
+        // Most other /products/types/* endpoints return results in '@graph' property.
+        return json['@graph'];
+      }
+    })
     .catch(err => {
       console.log('Fetch Error:', err)
     });
