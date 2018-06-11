@@ -30,7 +30,7 @@ function getProducts(type, office = '') {
   console.log('fetching', url);
   return fetch(url)
     .then(response => response.json())
-    .then(json => json.features)
+    .then(json => json['@graph'])
     .catch(err => {
       console.log('Fetch Error:', err)
     });
