@@ -1,0 +1,106 @@
+---
+layout: page
+title: NWS Hourly Forecast
+---
+
+<section class="forecast"></section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+<script src="js/overlay.js"></script>
+<script>
+  if ("geolocation" in navigator) {
+    overlay.startOverlay(); // initializes overlay and spinner
+    console.log('geolocation is available');
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  } else {
+    console.log('geolocation IS NOT available');
+  }
+
+  function success(position) {
+    console.log('Your current position is:' +
+      '\nlatitude:  ' + position.coords.latitude +
+      '\nlongitude: ' + position.coords.longitude +
+      '\naccuracy:  ' + position.coords.accuracy + ' m' +
+      '\naltitude:  ' + position.coords.altitude +
+      ' +/- ' + position.coords.altitudeAccuracy +
+      '\nheading:   ' + position.coords.heading +
+      '\nspeed:     ' + position.coords.speed +
+      '\ntimestamp: ' + position.timestamp);
+
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    getHourlyForecast(latitude, longitude)
+      .then(periods => {
+        let data = [];
+        for (let period of periods) {
+          data.push(createTimepoint(period));
+        }
+        // console.log(data);
+        overlay.stopOverlay();
+      })
+      .catch(err => {
+        console.log('Fetch Error:', err);
+      });
+  };
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  };
+
+  var options = {
+    enableHighAccuracy: true, // default: false
+    timeout: 5000, // default: Infinity
+    maximumAge: 0 // default: 0
+  };
+
+  /*
+   * Returns a promise for hourly forecast for point
+   * @param {number} latitude
+   * @param {number} longitude
+   * @returns {Array.<Object>} periods property which is a json array of forecast data
+   */
+  function getHourlyForecast(latitude, longitude) {
+    let url = 'https://api.weather.gov/points/' + latitude + ',' + longitude + '/forecast/hourly';
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => json.properties.periods)
+      .catch(err => {
+        console.log('Fetch Error:', err);
+      });
+  }
+
+  /*
+   * Constructs a div[class=timepoint] and adds it to .forecast
+   * @param {Object}
+   * @returns {Object} same as input but only with properties of interest
+   */
+  function createTimepoint(period) {
+    var timepoint = document.createElement('div');
+    timepoint.class = 'timepoint';
+    timepoint.style.border = 'solid black'
+    timepoint.style.padding = '0 1em';
+
+    // There is some autoconversion of Date objects using toString()
+    let startTime = new Date(period.startTime);
+    let endTime = new Date(period.endTime);
+    let temperature = period.temperature;
+    let temperatureUnit = period.temperatureUnit;
+    let windSpeed = period.windSpeed;
+    let windDirection = period.windDirection;
+    let shortForecast = period.shortForecast;
+
+    timepoint.innerHTML = '<p>' + startTime + '<br>' +
+      temperature + ' ' + temperatureUnit + ' ' + windSpeed + ' ' + windDirection + ' ' +
+      shortForecast + '</p>';
+
+    let forecast = document.getElementsByClassName('forecast')[0];
+    forecast.appendChild(timepoint);
+
+    // Creates array of objects selecting only the properties we want
+    let data = _.pick(period, 'startTime', 'temperature', 'temperatureUnit', 'windSpeed', 'windDirection', 'shortForecast');
+    // data.startTime = starTime; // update object with Date object
+    return data;
+  }
+</script>
