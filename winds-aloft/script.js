@@ -1,43 +1,72 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-  var div =
-    document.getElementById('click').addEventListener("click", function() {
-      console.log("click");
-      console.log(this.tagName); // note event.target gives element where event is captured, possibly a child element
-      console.log(event.pageX, event.pageY);
-      console.log(event.clientX, event.clientY);
-      this.style.background = "blue";
-    });
+ let url;
+ // forecast.weather.gov works with cors!
 
+ url = "https://forecast.weather.gov/product.php?site=NWS&issuedby=US1&product=FD1&format=CI&version=1&glossary=0"
 
+ fetch(url, {
+    method: 'GET',
+    mode: 'cors'
+  })
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+      console.log(response);
+   
+      // Examine the text in the response
+      response.text().then(function(data) {
+        console.log(data);
 
-  // from https://developer.yahoo.com/javascript/howto-ajax.html
-  // but may be out of date
-  var xmlhttp = null;
-  if (window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-    if (typeof xmlhttp.overrideMimeType != 'undefined') {
-      xmlhttp.overrideMimeType('text/xml');
+        // see https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
+        // and https://w3c.github.io/DOM-Parsing/
+        let parser = new DOMParser();
+     
+        htmlDoc = parser.parseFromString(data, "text/html");  // text/xml fails
+
+        //document.getElementById("demo").innerHTML = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+        console.log(htmlDoc);
+        console.log(htmlDoc.children);
+       
+        pre = htmlDoc.querySelector('.glossaryProduct');
+        console.log(pre);
+        winds = pre.textContent;  // Node.textContent, not style aware
+        //console.log(pre.innerText);  // Node.innerText, style aware, originally from IE, less common
+        //console.log(pre.innerHTML);  // Element.innerHTML 
+        console.log(winds.split(' '));
+        let lines = winds.split('\n');
+        console.log(lines);
+        lines.forEach(function(element, index, array) {
+          console.log(element);
+          console.log(element.split(/\s+/));
+        })
+
+        // adapted from https://www.aspsnippets.com/Articles/Read-Parse-and-display-CSV-Text-file-using-JavaScript-jQuery-and-HTML5.aspx
+        var table = document.createElement("table");
+        let rows = lines;
+        for (let i = 0; i < rows.length; i++) {
+          var row = table.insertRow(-1);
+          var cells = rows[i].trim().split(/\s+/);  // /\s+/ splits on any amount of whitespace, t
+          if(cells.length > 0) {
+            for (let j = 0; j < cells.length; j++) {
+              var cell = row.insertCell(-1);
+              cell.innerHTML = cells[j];
+            }
+          }
+        }
+        document.getElementsByTagName("body")[0].appendChild(table);
+
+        // TODO clean up above parsing of file to use field width instead of whitespace!
+                      
+      });
     }
-  } else if (window.ActiveXObject) {
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-  } else {
-    alert('Perhaps your browser does not support xmlhttprequests?');
-  }
-
-  var url = "http://forecast.weather.gov/product.php?site=NWS&issuedby=US1&product=FD1&format=TXT&version=1&glossary=0"
-
-  xmlhttp.open('GET', url, true);
-  xmlhttp.send(null);
-
-  // readyState 4 means complete
-  // status 200 meams successfule
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      var myObj = eval ( xmlhttp.responseText );  // if JSON is returned you can just eval
-    } else {
-      // wait for the call to complete
-    }
-  };
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
 
 });

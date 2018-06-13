@@ -1,5 +1,24 @@
 # Winds Aloft
 
+[aloft.py](https://github.com/natemara/aloft.py) Python interface to aviationweather
+
+Winds Aloft source: [this](http://winds-aloft.mohawkapps.com/winds) is used by the [aloft](https://github.com/OTGApps/aloft) app as well as [aloft-rs](https://github.com/natemara/aloft-rs). No https!
+
+See this for how to maybe get aviationweather working with jsonp:
+https://stackoverflow.com/questions/35903552/correct-parsing-of-json
+
+
+This may be good!
+https://data.noaa.gov/dataset/winds-aloft
+pointed to
+http://tgftp.nws.noaa.gov/data/raw/fb/
+which appears to direct link to 
+http://tgftp.nws.noaa.gov/data/raw/fb/fbus31.kwno.fd1.us1.txt
+http://tgftp.nws.noaa.gov/data/raw/fb/fbus33.kwno.fd3.us3.txt
+http://tgftp.nws.noaa.gov/data/raw/fb/fbus35.kwno.fd5.us5.txt
+
+## Notes
+
 Published at 6, 12, and 24 hour forecasts. We want the low elevation version. Reno is published by Salt Lake City.
 
 5/2017
@@ -32,6 +51,9 @@ Params:
 * `fcst={6|12|24}` (default 6)
 * `region=all` / gets you [all](https://aviationweather.gov/windtemp/data?level=l&fcst=06&region=all&layout=off) sites, seems unique to this (windtemp/data) interface!
 
+Note: See http://aviationweather.gov/products/nws/all for a non-query way to get all winds aloft!
+
+
 The 6, 12, and 24 hr data headers are:
 
     FBUS31 KWNO 270202
@@ -53,7 +75,7 @@ KWNO &rarr; "originating office"???? from WMO heading?
 
 FD1US1 &rarr; FD1 is *Product Identifier*, and *Office Identifier*, this is *AWIPS ID*
 
-See [NWS Communications Header Policy Document](http://www.nws.noaa.gov/tg/awips.php) for more info on header structure, as well as [International Codes & Bulletin Heading Practices](http://www.nws.noaa.gov/tg/metcode.php) and [Explanation of Data Designators T1T2A1A2ii CCCC](http://www.wmo.int/pages/prog/www/ois/Operational_Information/Publications/WMO_386/AHLsymbols/AHLsymbols_en.html) (and see other stuff at the [WMO](https://www.wmo.int/pages/index_en.html)). [Weather Communications Codes: A Breathless Overview](http://www.ominous-valve.com/wx_codes.txt) is a nice overview.
+See [NWS Communications Header Policy Document](http://www.nws.noaa.gov/tg/awips) for more info on header structure and WMO codes, as well as [International Codes & Bulletin Heading Practices](http://www.nws.noaa.gov/tg/metcode), [Segmentation Process for ASCII Data](https://www.weather.gov/tg/segment), [The WMO Communication Header](https://www.weather.gov/tg/headef) and [Explanation of Data Designators T1T2A1A2ii CCCC](http://www.wmo.int/pages/prog/www/ois/Operational_Information/Publications/WMO_386/AHLsymbols/AHLsymbols_en.html) (and see other stuff at the [WMO](https://www.wmo.int/pages/index_en.html)). [Weather Communications Codes: A Breathless Overview](http://www.ominous-valve.com/wx_codes.txt) is a nice overview.
 
 http://www.wmo.int/pages/prog/www/WMOCodes.html
 
@@ -66,7 +88,7 @@ http://forecast.weather.gov/product.php?site=CAE&issuedby=US1&product=FD1&format
 Params:
 
 * `site=NWS` seems to refer to the office, or region (e.g. WRH), or NWS for general. 
-* `format=TXT` for a plain text version or `CI` for the full site.
+* `format=TXT` for a plain text version or `CI` for the full site ("Graphics & Text").
 * `version=1` is current version, 
 
 Check that these on weather.gov are current! Esp. wrt versions 2+. Aviationweather might be more reliable? Verify once codes understood
@@ -77,7 +99,7 @@ https://aviationweather.gov/products/nws/info
 
 And this directive give all the details:
 
-http://www.nws.noaa.gov/directives/sym/pd01008012curr.pdf
+* [NWS Instruction 10-812, *Aviation Wind and Temperature Aloft Forecasts*](http://www.nws.noaa.gov/directives/sym/pd01008012curr.pdf)
 
 ## NWS Office Product Listing
 
@@ -158,4 +180,8 @@ There is a RAOB software and it has potentially useful info about where to get d
 
 
 
-
+## Etc
+
+https://www.weather.gov/media/publications/front/05nov-front.pdf
+
+http://maps.avnwx.com/help/winds.html
